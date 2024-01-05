@@ -1,15 +1,14 @@
 class BodyMassCalculator:
-    bmi_info = """
-    BMI VALUES
-    Underweight: less than 18.5
-    Normal:      between 18.5 and 24.9
-    Overweight:  between 25 and 29.9
-    Obese:       30 or greater
-    """
+    @classmethod
+    def display_metrics(cls):
+        print("BMI VALUES\n"
+              "Underweight: less than 18.5\n"
+              "Normal:      between 18.5 and 24.9\n"
+              "Overweight:  between 25 and 29.9\n"
+              "Obese:       30 or greater\n")
 
     @classmethod
     def get_input(cls):
-        print(f"{BodyMassCalculator.bmi_info}")
         while True:
             try:
                 weight: int = int(input("Enter weight (Pounds): "))
@@ -48,6 +47,7 @@ class BodyMassCalculator:
 
 
 def main():
+    BodyMassCalculator.display_metrics()
     bmi = BodyMassCalculator.get_input()
 
     print(bmi)
