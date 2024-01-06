@@ -5,3 +5,4 @@ class Coordinate:
 
 
 cordinate = Coordinate(3, 4)
+
