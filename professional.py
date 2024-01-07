@@ -6,3 +6,12 @@ class Coordinate:
 
 cordinate = Coordinate(3, 4)
 
+def to_jaden(string):
+    final_word = []
+    for word in string.split(" "):
+        word = word.capitalize()
+        final_word.append(word)
+    return " ".join(final_word)
+
+quote = "three Men, Six Options, Don't Choose."
+print(to_jaden(quote))
