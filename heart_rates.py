@@ -52,11 +52,20 @@ class HeartRates:
         self._date_of_birth = date_of_birth
 
     def calculate_age(self):
-        ...
-
+        date_diff = date.today() - self.date_of_birth
+        days: int = date_diff.days
+        return f"{days // 365}"
     def max_heart_rate(self):
-        ...
+        return 220 - int(self.calculate_age())
 
     def target_heart_rate(self):
         ...
 
+
+def main():
+    person1 = HeartRates.get()
+    print(person1.calculate_age())
+
+
+if __name__ == "__main__":
+    main()
