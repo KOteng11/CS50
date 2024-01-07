@@ -1,4 +1,6 @@
 from datetime import date
+
+
 class HeartRates:
     @classmethod
     def get(cls):
@@ -19,7 +21,7 @@ class HeartRates:
                 break
             except ValueError:
                 pass
-        
+
         return cls(first, last, date_of_birth)
 
     def __init__(self, first_name, last_name, date_of_birth):
@@ -55,16 +57,29 @@ class HeartRates:
         date_diff = date.today() - self.date_of_birth
         days: int = date_diff.days
         return f"{days // 365}"
+
     def max_heart_rate(self):
         return 220 - int(self.calculate_age())
 
     def target_heart_rate(self):
-        ...
+        min_target_heart_rate = round((50 / 100) * self.max_heart_rate())
+        max_target_heart_rate = round((85 / 100) * self.max_heart_rate())
+
+        return {"min": min_target_heart_rate, "max": max_target_heart_rate}
+
+    def __str__(self):
+        return (
+            f"\nName: {self.first_name} {self.last_name}\n"
+            f"Date of Birth: {self.date_of_birth}\n"
+            f"Age: {self.calculate_age()}\n"
+            f"Maximum Heart Rate: {self.max_heart_rate()}\n"
+            f"Target Heart Rate: {self.target_heart_rate()['min']}-{self.target_heart_rate()['max']} bpm"
+        )
 
 
 def main():
     person1 = HeartRates.get()
-    print(person1.calculate_age())
+    print(person1)
 
 
 if __name__ == "__main__":
